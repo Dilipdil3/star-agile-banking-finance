@@ -30,8 +30,5 @@ node {
             echo "Image push complete"
         }
     }
-    stage('ansible'){
-        ansiblePlaybook credentialsId: 'ubuntu', installation: 'ansible', playbook: 'https://github.com/Dilipdil3/star-agile-banking-finance/blob/master/ansible-playbook.yml'
-    }
-    
- }
+ 
+   
