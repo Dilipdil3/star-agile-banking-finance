@@ -32,6 +32,6 @@ node {
     }
     
     stage('ansible'){
-       ansiblePlaybook credentialsId: 'ubuntu', installation: 'ansible', playbook: 'ansible-playbook.yml'
+       ansiblePlaybook credentialsId: 'ubuntu', installation: 'ansible', inventory: '/etc/ansible/hosts', playbook: '/etc/ansible/ansible-playbook.yml'
        }
 }
