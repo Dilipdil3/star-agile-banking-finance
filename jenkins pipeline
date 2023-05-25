@@ -30,6 +30,7 @@ node {
             echo "Image push complete"
         }
     }
+}
     Stage ("absible"){
     ansiblePlaybook credentialsId: 'dockerhub', disableHostKeyChecking: true, installation: 'ansible', playbook: 'ansible-playbook.yml'
     }
