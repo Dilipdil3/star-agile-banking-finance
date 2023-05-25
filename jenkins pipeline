@@ -31,7 +31,7 @@ node {
         }
     }
     Stage ("absible"){
-    ansiblePlaybook credentialsId: 'ubuntu', disableHostKeyChecking: true, installation: 'ansible', inventory: 'dev.inv', playbook: 'ansible-playbook.yml'
+    ansiblePlaybook credentialsId: 'dockerhub', disableHostKeyChecking: true, installation: 'ansible', playbook: 'ansible-playbook.yml'
     }
 }
  
