@@ -1,28 +1,27 @@
-def containerName="docker-pipeline"
-def tag="latest"
-def dockerHubUser="dilipdil"
-def httpPort="8090"
+def containerName = "docker-pipeline"
+def tag = "latest"
+def dockerHubUser = "dilipdil"
+def httpPort = "8090"
 
 node {
-
     stage('Checkout') {
         checkout scm
     }
 
-    stage('Build'){
+    stage('Build') {
         sh "mvn clean install"
     }
 
-    stage("Image Prune"){
-         sh "docker image prune -a -f"
+    stage("Image Prune") {
+        sh "docker image prune -a -f"
     }
 
-    stage('Image Build'){
+    stage('Image Build') {
         sh "docker build -t $containerName:$tag --no-cache ."
         echo "Image build complete"
     }
 
-    stage('Push to Docker Registry'){
+    stage('Push to Docker Registry') {
         withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'dockerUser', passwordVariable: 'dockerPassword')]) {
             sh "docker login -u $dockerUser -p $dockerPassword"
             sh "docker tag $containerName:$tag $dockerUser/$containerName:$tag"
@@ -30,10 +29,11 @@ node {
             echo "Image push complete"
         }
     }
-    
-    Stage ("absible"){
-    ansiblePlaybook credentialsId: 'dockerhub', disableHostKeyChecking: true, installation: 'ansible', playbook: 'ansible-playbook.yml'
+
+    stage("ansible") {
+        ansiblePlaybook credentialsId: 'dockerhub', disableHostKeyChecking: true, installation: 'ansible', playbook: 'ansible-playbook.yml'
     }
 }
+
  
    
