@@ -1,7 +1,7 @@
 def containerName = "docker-pipeline"
 def tag = "latest"
 def dockerHubUser = "dilipdil"
-def httpPort = "8090"
+def httpPort = "8084"
 
 node {
     stage('Checkout') {
