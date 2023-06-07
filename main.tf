@@ -29,7 +29,7 @@ resource "aws_instance" "my_ec2_instance" {
 }
 
 resource "aws_security_group" "my_security_group" {
-  name        = "launch-wizard-7"
+  name        = "launch-wizard-9"
   description = "Allow all traffic"
 
   ingress {
