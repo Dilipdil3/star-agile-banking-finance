@@ -48,5 +48,7 @@ resource "aws_security_group" "my_security_group" {
 }
 
 resource "aws_subnet" "my_subnet" {
-  # Provide the necessary subnet configuration here
+  vpc_id                  = "YOUR_VPC_ID"
+  cidr_block              = "10.0.0.0/24"  # Replace with your desired subnet CIDR block
+  availability_zone       = "us-east-1a"   # Replace with your desired availability zone
 }
