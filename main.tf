@@ -19,7 +19,7 @@ resource "aws_route_table" "my_route_table" {
 resource "aws_subnet" "my_subnet" {
   vpc_id            = aws_vpc.my_vpc.id
   cidr_block        = "10.0.1.0/24"
-  availability_zone = "us-east-1"
+  availability_zone = "us-east-1a"
 }
 
 resource "aws_route_table_association" "my_route_table_association" {
@@ -60,8 +60,8 @@ resource "aws_network_interface" "my_network_interface" {
 }
 
 resource "aws_eip" "my_eip" {
-  vpc               = true
-  network_interface = aws_network_interface.my_network_interface.id
+  domain             = "vpc"
+  network_interface  = aws_network_interface.my_network_interface.id
 }
 
 resource "aws_instance" "my_ec2_instance" {
@@ -76,11 +76,7 @@ resource "aws_instance" "my_ec2_instance" {
     inline = [
       "sudo apt-get update",
       "sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common",
-      "curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg",
-      "echo \"deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable\" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null",
-      "sudo apt-get update",
-      "sudo apt-get install -y docker-ce docker-ce-cli containerd.io",
-      "sudo usermod -aG docker ubuntu"
+      "curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
     ]
   }
 }
