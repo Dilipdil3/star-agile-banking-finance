@@ -4,6 +4,12 @@ provider "aws" {
   secret_key = "HBcjAF/Eqt2fGFcTUG29WyE9NE9r0QvkC9AR3iJa"
 }
 
+provider "aws" {
+  region     = "us-east-1"
+  access_key = "YOUR_ACCESS_KEY"
+  secret_key = "YOUR_SECRET_KEY"
+}
+
 resource "aws_instance" "my_ec2_instance" {
   ami                          = "ami-0261755bbcb8c4a84"
   instance_type                = "t2.medium"
@@ -29,7 +35,7 @@ resource "aws_instance" "my_ec2_instance" {
 }
 
 resource "aws_security_group" "my_security_group" {
-  name        = "launch-wizard-9"
+  name        = "launch-wizard-7"
   description = "Allow all traffic"
 
   ingress {
@@ -48,7 +54,7 @@ resource "aws_security_group" "my_security_group" {
 }
 
 resource "aws_subnet" "my_subnet" {
-  vpc_id                  = "YOUR_VPC_ID"
+  vpc_id                  = "vpc-0815824eeaeccaab8"
   cidr_block              = "10.0.0.0/24"  # Replace with your desired subnet CIDR block
   availability_zone       = "us-east-1a"   # Replace with your desired availability zone
 }
