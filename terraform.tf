@@ -55,8 +55,8 @@ resource "aws_security_group" "my_security_group" {
 }
 
 resource "aws_network_interface" "my_network_interface" {
-  subnet_id    = aws_subnet.my_subnet.id
-  private_ips  = ["10.0.1.10"]
+  subnet_id   = aws_subnet.my_subnet.id
+  private_ips = ["10.0.1.10"]
 }
 
 resource "aws_eip" "my_eip" {
@@ -65,19 +65,19 @@ resource "aws_eip" "my_eip" {
 }
 
 resource "aws_instance" "my_ec2_instance" {
-  ami                    = "ami-0261755bbcb8c4a84"
-  instance_type          = "t2.medium"
-  key_name               = "project"
-  vpc_security_group_ids = [aws_security_group.my_security_group.id]
-  subnet_id              = aws_subnet.my_subnet.id
-  associate_public_ip_address = true
+  ami                          = "ami-0261755bbcb8c4a84"
+  instance_type                = "t2.medium"
+  key_name                     = "project"
+  vpc_security_group_ids       = [aws_security_group.my_security_group.id]
+  subnet_id                    = aws_subnet.my_subnet.id
+  associate_public_ip_address  = true
 
   provisioner "remote-exec" {
     inline = [
       "sudo apt-get update",
       "sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common",
       "curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg",
-      'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null',
+      "echo \"deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable\" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null",
       "sudo apt-get update",
       "sudo apt-get install -y docker-ce docker-ce-cli containerd.io",
       "sudo usermod -aG docker ubuntu"
