@@ -19,7 +19,7 @@ resource "aws_route_table" "my_route_table" {
 resource "aws_subnet" "my_subnet" {
   vpc_id            = aws_vpc.my_vpc.id
   cidr_block        = "10.0.1.0/24"
-  availability_zone = "us-east-1"
+  availability_zone = "us-east-1a"
 }
 
 resource "aws_route_table_association" "my_route_table_association" {
