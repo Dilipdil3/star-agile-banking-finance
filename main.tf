@@ -71,6 +71,10 @@ resource "aws_instance" "my_ec2_instance" {
   vpc_security_group_ids       = [aws_security_group.my_security_group.id]
   subnet_id                    = aws_subnet.my_subnet.id
   associate_public_ip_address  = true
+  
+    tags = {
+    Name = "Prod-server"
+  }
 
   provisioner "remote-exec" {
     inline = [
