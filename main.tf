@@ -49,6 +49,10 @@ resource "aws_security_group" "my_security_group" {
 
 resource "aws_subnet" "my_subnet" {
   vpc_id                  = "vpc-0815824eeaeccaab8"
-  cidr_block              = "10.0.0.0/16"  # Replace with your desired subnet CIDR block
+  cidr_block              = "10.0.0.0/24"  # Replace with a valid CIDR block within the VPC CIDR range
   availability_zone       = "us-east-1a"   # Replace with your desired availability zone
+}
+
+}
+
 }
