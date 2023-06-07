@@ -53,6 +53,3 @@ resource "aws_subnet" "my_subnet" {
   availability_zone       = "us-east-1a"   # Replace with your desired availability zone
 }
 
-}
-
-}
