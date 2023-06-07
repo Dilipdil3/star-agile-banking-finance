@@ -4,6 +4,7 @@ provider "aws" {
   secret_key = "HBcjAF/Eqt2fGFcTUG29WyE9NE9r0QvkC9AR3iJa"
 }
 
+
 resource "aws_vpc" "my_vpc" {
   cidr_block = "10.0.0.0/16"
 }
@@ -27,9 +28,9 @@ resource "aws_route_table_association" "my_route_table_association" {
   route_table_id = aws_route_table.my_route_table.id
 }
 
-resource "aws_security_group" "launch-wizard-8" {
-  name        = "launch-wizard-8"
-  description = "launch-wizard-8"
+resource "aws_security_group" "my_security_group" {
+  name        = "my-security-group"
+  description = "My Security Group"
   vpc_id      = aws_vpc.my_vpc.id
 
   ingress {
@@ -54,21 +55,21 @@ resource "aws_security_group" "launch-wizard-8" {
   }
 }
 
-resource "aws_network_interface" "Elastic network interface" {
+resource "aws_network_interface" "my_network_interface" {
   subnet_id   = aws_subnet.my_subnet.id
   private_ips = ["10.0.1.10"]
 }
 
 resource "aws_eip" "my_eip" {
   domain             = "vpc"
-  network_interface  = aws_network_interface.eni-08f27e676ae71dc4b
+  network_interface  = aws_network_interface.my_network_interface.id
 }
 
 resource "aws_instance" "my_ec2_instance" {
   ami                          = "ami-0261755bbcb8c4a84"
   instance_type                = "t2.medium"
   key_name                     = "project"
-  vpc_security_group_ids       = [aws_security_group.sgr-09a049c480ec9f2f1]
+  vpc_security_group_ids       = [aws_security_group.my_security_group.id]
   subnet_id                    = aws_subnet.my_subnet.id
   associate_public_ip_address  = true
 
