@@ -30,9 +30,6 @@ node {
         }
     }
 
-    stage("ansible") {
-        ansiblePlaybook credentialsId: 'ubuntu', disableHostKeyChecking: true, installation: 'ansible', inventory: 'dev.inv', playbook: 'ansible-playbook.yml'
-    }
 }
 
  
