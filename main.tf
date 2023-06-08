@@ -4,6 +4,14 @@ provider "aws" {
   secret_key = var.aws_secret_key
 }
 
+variable "aws_access_key" {
+  description = "AWS Access Key"
+}
+
+variable "aws_secret_key" {
+  description = "AWS Secret Key"
+}
+
 resource "aws_instance" "my_ec2_instance" { 
  ami = "ami-0261755bbcb8c4a84" 
  instance_type = "t2.medium" 
