@@ -1,21 +1,14 @@
 provider "aws" {
   region     = "us-east-1"
-  access_key = var.aws_access_key
-  secret_key = var.aws_secret_key
-}
-
-variable "aws_access_key" {
-  description = "AWS Access Key"
-}
-
-variable "aws_secret_key" {
-  description = "AWS Secret Key"
+  access_key = "AKIA2L4SN5M7HCPJSX64"
+  secret_key = "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"
 }
 
 resource "aws_instance" "my_ec2_instance" { 
  ami = "ami-0261755bbcb8c4a84" 
  instance_type = "t2.medium" 
  key_name = "project" 
+  
  tags ={ 
  name="Terraform hands-on" 
 } 
