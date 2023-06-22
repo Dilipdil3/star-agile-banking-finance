@@ -31,8 +31,6 @@ node {
     }
      stage("ansible") {
         ansiblePlaybook credentialsId: 'jenkins', installation: 'Ansible', inventory: 'dev.inv', playbook: 'ansible-playbook.yml'
-    }
-    Stage("productionserver") {
         ansiblePlaybook credentialsId: 'jenkins', installation: 'Ansible', inventory: 'dev.inv', playbook: 'production-playbook.yml'
      }   
 }
