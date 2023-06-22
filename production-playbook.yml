@@ -4,13 +4,13 @@
   connection : ssh
   tasks : 
   - name: updating apt
-    command : sudo apt-get update
+    command : apt-get update
 
   - name : Install Docker
-    command : sudo apt-get install -y docker.io
+    command : apt-get install -y docker.io
 
   - name : Start Docker Service
-    command : sudo systemctl start docker
+    command : systemctl start docker
 
   - name: Deploy Docker Container
     command: docker run -itd -p 8080:8081 dilipdil/docker-pipeline
