@@ -15,7 +15,8 @@ resource "aws_instance" "my_ec2_instance" {
      sudo apt-get update -y
      sudo apt install docker.io -y
      sudo systemctl enable docker
-     sudo docker run -itd -p 8085:8081 vikuldocker/insureme:1.0
+     sudo docker run -itd -p 8084:8081 dilipdil/docker-pipeline
      sudo docker start $(docker ps -aq)
+EOF
 }
 
