@@ -36,5 +36,5 @@ node {
         ansiblePlaybook credentialsId: 'jenkins', installation: 'Ansible', inventory: 'dev.inv', playbook: 'production-playbook.yml'
      }   
 }
- 
+}
    
