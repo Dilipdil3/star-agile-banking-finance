@@ -6,11 +6,21 @@
     - name: updating apt
       command: sudo apt-get update
 
-    - name: Install Docker
-      command: sudo apt-get install -y docker.io
+    - name: Update package lists and upgrade packages
+      command: sudo apt-get update && sudo apt-get upgrade -y
+
+    - name: Install Docker dependencies
+      command: sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common
+
+    - name: Install Docker and containerd
+      command: |
+        curl -fsSL https://get.docker.com -o get-docker.sh
+        sudo sh get-docker.sh
+        sudo apt-get install -y containerd
 
     - name: Start Docker Service
       command: sudo systemctl start docker
 
     - name: Deploy Docker Container
       command: docker run -itd -p 8080:8081 dilipdil/docker-pipeline
+
