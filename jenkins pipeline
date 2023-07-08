@@ -30,9 +30,6 @@ node {
         }
     }
      stage("ansible") {
-        ansiblePlaybook credentialsId: 'jenkins', installation: 'Ansible', inventory: 'dev.inv', playbook: 'ansible-playbook.yml'
-        }
-     stage("production") {
-        ansiblePlaybook become: true, credentialsId: 'jenkins', disableHostKeyChecking: true, installation: 'Ansible', inventory: '/etc/ansible/hosts', playbook: 'production-playbook.yml'
-     }   
+        ansiblePlaybook credentialsId: 'ubuntu', installation: 'ansible', inventory: 'dev.inv', playbook: 'ansible-playbook.yml'
+        }   
    }
