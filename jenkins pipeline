@@ -1,4 +1,4 @@
-def containerName = "docker-pipeline"
+def containerName = "Akshay"
 def tag = "latest"
 def dockerHubUser = "dilipdil"
 def httpPort = "8084"
