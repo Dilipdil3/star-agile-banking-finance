@@ -1,5 +1,2 @@
 [webservers]
-172.31.31.232 ansible_user=ubuntu
-
-[Productionservers]
-172.31.82.156 ansible_user=ubuntu
+172.31.93.167 ansible_user=ubuntu
