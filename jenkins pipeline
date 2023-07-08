@@ -30,6 +30,6 @@ node {
         }
     }
      stage("ansible") {
-       ansiblePlaybook credentialsId: 'akshay', installation: 'ansible', inventory: 'dev.inv', playbook: 'ansible-playbook.yml', sudo: true
+     ansiblePlaybook credentialsId: 'akshay', installation: 'ansible', inventory: '/etc/ansible/project.pem', playbook: 'ansible-playbook.yml'
         }   
    }
